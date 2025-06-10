@@ -14,4 +14,5 @@ class AutenticacaoController
     {
         include __DIR__ . '/../views/autenticacao/recuperar.php';
     }
+    
 }

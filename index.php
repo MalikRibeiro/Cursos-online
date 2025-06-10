@@ -11,6 +11,12 @@ if ($pagina == '' || $pagina == null) {
     $pagina = 'login';
 }
 
+if ($pagina === 'login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    HomeController::logar();
+    exit;
+}
+
+
 match ($pagina) {
     'login'    => HomeController::login(),
     'logout'   => HomeController::logout(),
