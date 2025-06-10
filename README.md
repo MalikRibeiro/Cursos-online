@@ -28,17 +28,12 @@ Você pode acessar o projeto hospedado no GitHub Pages:
 ## 📁 Estrutura do Projeto
 
 Cursos-online/
-├── index.html # Página inicial com o catálogo de cursos
-|
-├── descricao.html # Página de detalhes com vídeo incorporado do curso
-|
-├── cursos.js # Arquivo com os dados dos cursos (título, descrição, link do vídeo)
-|
-├── script.js # Script responsável por carregar e exibir os cursos dinamicamente
-|
-├── style.css # Estilo visual da aplicação
-|
-└── imagens/ # Pasta opcional para armazenar imagens adicionais
+├── index.html         # Página inicial com o catálogo de cursos
+├── descricao.html     # Página de detalhes com vídeo incorporado do curso
+├── cursos.js          # Arquivo com os dados dos cursos (título, descrição, link do vídeo)
+├── script.js          # Script responsável por carregar e exibir os cursos dinamicamente
+├── style.css          # Estilo visual da aplicação
+└── imagens/           # Pasta opcional para armazenar imagens adicionais
 
 ---
 
