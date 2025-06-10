@@ -2,10 +2,10 @@
 CREATE DATABASE IF NOT EXISTS catalogo_cursos;
 USE catalogo_cursos;
 
--- Tabela de usuários
+-- Tabela de usuários (agora com email)
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL
 );
 
@@ -25,11 +25,11 @@ CREATE TABLE IF NOT EXISTS usuarios_cursos (
     FOREIGN KEY (curso_id) REFERENCES cursos(id) ON DELETE CASCADE
 );
 
--- Inserção de usuários (senha deve ser criptografada via PHP no sistema real)
-INSERT INTO usuarios (nome, senha) VALUES
-('João Silva', MD5('senha123')),
-('Maria Souza', MD5('minhasenha')),
-('Carlos Oliveira', MD5('123456'));
+-- Inserção de usuários (com e-mails)
+INSERT INTO usuarios (email, senha) VALUES
+('joao.silva@email.com', MD5('senha123')),
+('maria.souza@email.com', MD5('minhasenha')),
+('carlos.oliveira@email.com', MD5('123456'));
 
 -- Inserção de cursos
 INSERT INTO cursos (titulo, descricao) VALUES
@@ -39,8 +39,8 @@ INSERT INTO cursos (titulo, descricao) VALUES
 
 -- Vinculando usuários aos cursos
 INSERT INTO usuarios_cursos (usuario_id, curso_id) VALUES
-(1, 1), -- João faz Introdução ao PHP
-(1, 2), -- João faz Banco de Dados com MySQL
-(2, 2), -- Maria faz Banco de Dados
-(2, 3), -- Maria faz POO
-(3, 1); -- Carlos faz Introdução ao PHP
+(1, 1),
+(1, 2),
+(2, 2),
+(2, 3),
+(3, 1);
