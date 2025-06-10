@@ -9,7 +9,7 @@
 
 <body>
     <header>
-        <nav><a href="/views/home.php">Início</a> |
+        <nav><a href="/index.php">Início</a> |
             <a href="/views/sobre.php">Sobre</a> |
             <a href="/views/contato.php">Contato</a> |
             <a href="/models/Curso.php">Cursos</a> |

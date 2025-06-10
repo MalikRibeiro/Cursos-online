@@ -1,43 +1,26 @@
 <?php
+session_start();  
+require __DIR__.'/controllers/HomeController.php';
+require __DIR__.'/controllers/CursoController.php';
 
-if (!isset($_SESSION)) {
-    session_start();
-}
-
-// Configuração do banco de dados
-require_once __DIR__ . '/config/banco.php';
-
-require_once __DIR__ . '/controllers/AutenticacaoController.php';
-require_once __DIR__ . '/controllers/HomeController.php';
-require_once __DIR__ . '/controllers/CursoController.php';
-
-// Processar URL
 $url = $_GET['url'] ?? '';
-$url = explode("/", trim($url, '/'));
-
-// Construir página
+$url = explode('/', $url);
 $pagina = $url[0] ?? '';
-if (isset($url[1]) && !empty($url[1])) {
-    $pagina .= "/{$url[1]}";
+
+if ($pagina == '' || $pagina == null) {
+    $pagina = 'login';
 }
 
-// Sistema de roteamento
-try {
-    match ($pagina) {
-        'autenticacao/cadastrar' => (new AutenticacaoController())->cadastrar(),
-        'autenticacao/recuperar' => (new AutenticacaoController())->recuperar(),
-        'autenticacao/login'     => (new AutenticacaoController())->login(),
-
-        'cursos/adicionar'       => (new CursoController())->adicionar(),
-        'cursos/editar'          => (new CursoController())->editar((int)($_GET['id'] ?? 0)),
-        'cursos/visualizar'      => (new CursoController())->visualizar((int)($_GET['id'] ?? 0)),
-        'cursos'                 => (new CursoController())->listar(),
-
-        'sobre'                  => (new HomeController())->sobre(),
-        'contato'                => (new HomeController())->contato(),
-        default                  => (new HomeController())->iniciar(),
-    };
-} catch (Exception $e) {
-    // Em caso de erro, redirecionar para página inicial
-    (new HomeController())->iniciar();
-}
+match ($pagina) {
+    'login'    => HomeController::login(),
+    'logout'   => HomeController::logout(),
+    'cursos'   => CursoController::index(),
+    'cursos/novo'   => CursoController::novo(),
+    'cursos/criar'  => CursoController::criar(),
+    'cursos/ver'    => CursoController::ver($url[2] ?? null),
+    'cursos/editar' => CursoController::editar($url[2] ?? null),
+    'cursos/atualizar' => CursoController::atualizar(),
+    'cursos/apagar'    => CursoController::apagar($url[2] ?? null),
+    default => HomeController::login(),
+};
+exit; 

@@ -1,0 +1,7 @@
+RewriteEngine On
+# RewriteBase /aula/Projeto%20Final/Projeto%20Final%20-%20v03/  # Ajuste ESSA linha!
+# Permitir acesso direto a arquivos existentes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# Redirecionar tudo para index.php?url=...
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
