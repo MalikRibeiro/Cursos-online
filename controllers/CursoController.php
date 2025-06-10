@@ -1,69 +1,160 @@
 <?php
 
-use app\model\Curso;
+require_once __DIR__ . '/../models/Curso.php';
+require_once __DIR__ . '/../models/Usuario.php';
 
 class CursoController
 {
+    private static function verificarAutenticacao()
+    {
+        if (!Usuario::isLoggedIn()) {
+            header('Location: ?url=login');
+            exit;
+        }
+    }
+    
     public static function index()
     {
-        if (!isset($_SESSION['user_id'])) {
-            header('Location: login');
-            exit;
-        }
-        // Obtém lista de cursos (use modelo Curso::todos ou similar)
+        self::verificarAutenticacao();
         $cursos = Curso::todos();
-        require __DIR__ . '/../views/cursos.php';
+        require __DIR__ . '/../views/listar.php';
     }
+    
     public static function novo()
     {
-        if (!isset($_SESSION['user_id'])) {
-            header('Location: login');
-            exit;
-        }
-        require __DIR__ . '/../views/cursos-criar.php';
+        self::verificarAutenticacao();
+        require __DIR__ . '/../views/adicionar.php';
     }
+    
     public static function criar()
     {
-        if (!isset($_SESSION['user_id'])) {
-            header('Location: login');
-            exit;
-        }
+        self::verificarAutenticacao();
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $nome = $_POST['nome'] ?? null;
-            // ... obter outros campos ...
-            if ($nome) {
-                Curso::criar($nome /*, ... outros campos ... */);
+            $titulo = $_POST['titulo'] ?? '';
+            $descricao = $_POST['descricao'] ?? '';
+            $urlVideo = $_POST['url_video'] ?? '';
+            
+            if (!empty($titulo) && !empty($descricao)) {
+                if (Curso::criar($titulo, $descricao, $urlVideo)) {
+                    header("Location: ?url=cursos");
+                    exit;
+                }
             }
         }
-        header("Location: ../cursos");
+        
+        header("Location: ?url=cursos/novo");
         exit;
     }
+    
     public static function ver($idCurso)
     {
-        if (!isset($_SESSION['user_id'])) {
-            header('Location: login');
+        self::verificarAutenticacao();
+        
+        if (!$idCurso) {
+            header("Location: ?url=cursos");
             exit;
         }
+        
         $curso = Curso::buscarPorId($idCurso);
-        require __DIR__ . '/../views/cursos-detalhe.php';
+        
+        if (!$curso) {
+            header("Location: ?url=cursos");
+            exit;
+        }
+        
+        require __DIR__ . '/../views/visualizar.php';
     }
-    public function listar()
+    
+    public static function editar($idCurso)
     {
-        $cursos = Curso::todos();
-        include __DIR__ . '/../views/cursos/listar.php';
+        self::verificarAutenticacao();
+        
+        if (!$idCurso) {
+            header("Location: ?url=cursos");
+            exit;
+        }
+        
+        $curso = Curso::buscarPorId($idCurso);
+        
+        if (!$curso) {
+            header("Location: ?url=cursos");
+            exit;
+        }
+        
+        require __DIR__ . '/../views/editar.php';
     }
-    public function adicionar()
+    
+    public static function atualizar()
     {
-        include __DIR__ . '/../views/cursos/adicionar.php';
+        self::verificarAutenticacao();
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'] ?? '';
+            $titulo = $_POST['titulo'] ?? '';
+            $descricao = $_POST['descricao'] ?? '';
+            $urlVideo = $_POST['url_video'] ?? '';
+            
+            if (!empty($id) && !empty($titulo) && !empty($descricao)) {
+                if (Curso::atualizar($id, $titulo, $descricao, $urlVideo)) {
+                    header("Location: ?url=cursos/ver/$id");
+                    exit;
+                }
+            }
+        }
+        
+        header("Location: ?url=cursos");
+        exit;
     }
-    public function editar(int $id)
+    
+    public static function apagar($idCurso)
     {
-        $curso = Curso::buscarPorId($id);
-        include __DIR__ . '/../views/cursos/editar.php';
+        self::verificarAutenticacao();
+        
+        if (!$idCurso) {
+            header("Location: ?url=cursos");
+            exit;
+        }
+        
+        if (Curso::apagar($idCurso)) {
+            header("Location: ?url=cursos");
+            exit;
+        }
+        
+        header("Location: ?url=cursos/ver/$idCurso");
+        exit;
     }
-    public function visualizar(int $id)
+    
+    // Função auxiliar para extrair o ID do vídeo do YouTube
+    public static function extrairIdYoutube($url)
     {
-        $curso = Curso::buscarPorId($id);
-        include __DIR__ . '/../views/cursos/visualizar.php';
+        if (empty($url)) return null;
+        
+        $pattern = '/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/';
+        preg_match($pattern, $url, $matches);
+        
+        return isset($matches[1]) ? $matches[1] : null;
+    }
+    
+    // Função auxiliar para gerar URL da thumbnail do YouTube
+    public static function obterThumbnailYoutube($url)
+    {
+        $videoId = self::extrairIdYoutube($url);
+        if ($videoId) {
+            return "https://img.youtube.com/vi/{$videoId}/maxresdefault.jpg";
+        }
+        return null;
+    }
+    
+    // Função auxiliar para gerar URL de embed do YouTube
+    public static function obterEmbedYoutube($url)
+    {
+        $videoId = self::extrairIdYoutube($url);
+        if ($videoId) {
+            return "https://www.youtube.com/embed/{$videoId}";
+        }
+        return null;
     }
 }
+
+

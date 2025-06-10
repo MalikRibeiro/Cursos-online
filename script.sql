@@ -13,7 +13,8 @@ CREATE TABLE IF NOT EXISTS usuarios (
 CREATE TABLE IF NOT EXISTS cursos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(150) NOT NULL,
-    descricao TEXT
+    descricao TEXT,
+    url_video VARCHAR(255) -- Nova coluna para a URL do vídeo do YouTube
 );
 
 -- Tabela intermediária para relação muitos-para-muitos entre usuários e cursos
@@ -31,11 +32,11 @@ INSERT INTO usuarios (email, senha) VALUES
 ('maria.souza@email.com', MD5('minhasenha')),
 ('carlos.oliveira@email.com', MD5('123456'));
 
--- Inserção de cursos
-INSERT INTO cursos (titulo, descricao) VALUES
-('Introdução ao PHP', 'Curso básico sobre a linguagem PHP e conceitos de backend'),
-('Banco de Dados com MySQL', 'Aprenda a modelar, criar e manipular bancos de dados com MySQL'),
-('Programação Orientada a Objetos', 'Conceitos de POO aplicados com PHP');
+-- Inserção de cursos (com URLs de vídeo de exemplo)
+INSERT INTO cursos (titulo, descricao, url_video) VALUES
+('Introdução ao PHP', 'Curso básico sobre a linguagem PHP e conceitos de backend', 'https://www.youtube.com/watch?v=TfsO0BGvGn0&list=PLHz_AreHm4dlFPrCXCmd5g92860x_Pbr_&ab_channel=CursoemV%C3%ADdeo'),
+('Banco de Dados com MySQL', 'Aprenda a modelar, criar e manipular bancos de dados com MySQL', 'https://www.youtube.com/watch?v=Ofktsne-utM&list=PLHz_AreHm4dkBs-795Dsgvau_ekxg8g1r&ab_channel=CursoemV%C3%ADdeo'),
+('Programação Orientada a Objetos Java', 'Conceitos de POO aplicados com Java', 'https://www.youtube.com/watch?v=KlIL63MeyMY&list=PLHz_AreHm4dkqe2aR0tQK74m8SFe-aGsY&ab_channel=CursoemV%C3%ADdeo');
 
 -- Vinculando usuários aos cursos
 INSERT INTO usuarios_cursos (usuario_id, curso_id) VALUES
@@ -44,3 +45,4 @@ INSERT INTO usuarios_cursos (usuario_id, curso_id) VALUES
 (2, 2),
 (2, 3),
 (3, 1);
+

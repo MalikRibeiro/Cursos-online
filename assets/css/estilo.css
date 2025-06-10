@@ -1,6 +1,10 @@
 :root {
     --primary-color: #007bff;
     --secondary-color: #0056b3;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
     --text-color: #333;
     --light-text-color: #fff;
     --background-light: #f4f4f4;
@@ -10,6 +14,10 @@
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
     --spacing-lg: 3rem;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
@@ -47,12 +55,14 @@ nav ul li a {
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease-in-out;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
 }
 
 nav ul li a:hover,
 nav ul li a:focus {
     color: #ffd700;
-    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .courses {
@@ -115,12 +125,85 @@ nav ul li a:focus {
     text-align: center;
     transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
     margin-top: auto;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
 .btn:hover,
 .btn:focus {
     background-color: var(--secondary-color);
     transform: translateY(-2px);
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Login Container */
+.login-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.login-info {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.login-info ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.erro {
+    margin-bottom: 1rem;
 }
 
 footer {
@@ -134,6 +217,7 @@ footer {
     box-shadow: 0 -2px 10px var(--shadow-color);
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
@@ -157,18 +241,29 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    footer {
-        position: relative;
+    .courses h2 {
+        font-size: 2rem;
+    }
+
+    .login-container {
+        margin: 1rem;
+        padding: 1.5rem;
     }
 }
 
 @media (max-width: 480px) {
     .courses h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .btn {
         width: 100%;
         padding: 0.6rem 1rem;
     }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
 }
+
