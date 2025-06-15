@@ -45,6 +45,16 @@ class Curso
         $stmt->bind_param("i", $id);
         return $stmt->execute();
     }
+    
+    public static function buscarOutrosCursos($idAtual, $limite = 5)
+    {
+        $conn = Banco::getConn();
+        $stmt = $conn->prepare('SELECT * FROM cursos WHERE id != ? ORDER BY titulo LIMIT ?');
+        $stmt->bind_param("ii", $idAtual, $limite);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        return $resultado->fetch_all(MYSQLI_ASSOC);
+    }
 }
 
 

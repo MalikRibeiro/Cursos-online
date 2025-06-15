@@ -1,6 +1,6 @@
 </main>
 <footer>
-    <p>&copy; 2025 Catálogo de Cursos</p>
+    <p>&copy; 2025 PreviewCursos</p>
 </footer>
 </body>
 

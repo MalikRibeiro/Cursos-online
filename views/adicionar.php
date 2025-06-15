@@ -3,7 +3,7 @@
 <div class="courses">
     <h2>Adicionar Novo Curso</h2>
     
-    <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <div style="max-width: 600px; margin: 0 auto; background-color: black-blue; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
         <form method="post" action="?url=cursos/criar">
             <div class="form-group" style="margin-bottom: 1.5rem;">
                 <label for="titulo" style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Título do Curso:</label>

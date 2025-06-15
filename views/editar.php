@@ -3,7 +3,7 @@
 <div class="courses">
     <h2>Editar Curso</h2>
     
-    <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <div style="max-width: 600px; margin: 0 auto; background-color: black-blue; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
         <form method="post" action="?url=cursos/atualizar">
             <input type="hidden" name="id" value="<?= $curso['id'] ?>" />
             

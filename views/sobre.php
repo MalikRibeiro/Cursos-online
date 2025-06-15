@@ -1,9 +1,9 @@
 <?php include 'layout/cabecalho.php'; ?>
 
 <div class="courses">
-    <h2>Sobre o Catálogo de Cursos</h2>
+    <h2>Tudo sobre o PreviewCursos</h2>
     
-    <div style="max-width: 800px; margin: 0 auto; background-color: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <div style="max-width: 800px; margin: 0 auto; background-color: black-blue; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
         <div style="text-align: center; margin-bottom: 2rem;">
             <h3 style="color: #007bff;">Nossa Missão</h3>
             <p style="font-size: 1.1rem; line-height: 1.8;">

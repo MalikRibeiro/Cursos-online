@@ -6,7 +6,7 @@ require __DIR__ . "/controllers/CursoController.php";
 $url = $_GET["url"] ?? "";
 $url_parts = explode("/", $url);
 $pagina = $url_parts[0] ?? "";
-$id = $url_parts[2] ?? null; // Captura o ID se existir
+$id = $url_parts[2] ?? null;
 
 if ($pagina == "" || $pagina == null) {
     $pagina = "login";
@@ -17,7 +17,6 @@ if ($pagina === "login" && $_SERVER["REQUEST_METHOD"] === "POST") {
     exit;
 }
 
-// Lógica de roteamento mais robusta
 switch ($pagina) {
     case "login":
         HomeController::login();

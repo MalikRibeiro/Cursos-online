@@ -3,7 +3,7 @@
 <div class="courses">
     <h2>Entre em Contato</h2>
     
-    <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <div style="max-width: 600px; margin: 0 auto; background-color: black-blue; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
         <div style="text-align: center; margin-bottom: 2rem;">
             <p style="font-size: 1.1rem; line-height: 1.8;">
                 Tem alguma dúvida, sugestão ou feedback? Estamos aqui para ajudar!
@@ -39,10 +39,8 @@
                 <button type="submit" class="btn">Enviar Mensagem</button>
             </div>
         </form>
-        
-        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #ddd; text-align: center;">
             <h3 style="color: #007bff;">Outras formas de contato</h3>
-            <p><strong>Email:</strong> contato@catalogocursos.com</p>
+            <p><strong>Email:</strong> contato@previewcursos.com</p>
             <p><strong>Telefone:</strong> (11) 9999-9999</p>
         </div>
     </div>

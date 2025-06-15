@@ -4,7 +4,7 @@ require_once __DIR__ . '/../controllers/CursoController.php';
 ?>
 
 <div class="courses">
-    <h2>Catálogo de Cursos</h2>
+    <h2>PreviewCursos</h2>
 
     <div style="margin-bottom: 2rem;">
         <a href="?url=cursos/novo" class="btn">+ Adicionar Novo Curso</a>

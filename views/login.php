@@ -5,7 +5,7 @@
     
     <?php if (isset($erro) && !empty($erro)): ?>
         <div class="erro">
-            <p style="color: red; background-color: #ffe6e6; padding: 10px; border: 1px solid #ff0000; border-radius: 5px;">
+            <p style="color: red; background-color: black-blue; padding: 10px; border: 1px solid #ff0000; border-radius: 5px;">
                 <?php echo htmlspecialchars($erro); ?>
             </p>
         </div>
@@ -28,9 +28,9 @@
     <div class="login-info">
         <p><strong>Usuários de teste:</strong></p>
         <ul>
-            <li>joao.silva@email.com - senha: senha123</li>
-            <li>maria.souza@email.com - senha: minhasenha</li>
-            <li>carlos.oliveira@email.com - senha: 123456</li>
+            <li>malik.ribeiro@hotmail.com - senha: admin123</li>
+            <li>allan.mazurana@gmail.com - senha: 12345</li>
+            <li>lucas.daniel@outlook.com - senha: 12345</li>
         </ul>
     </div>
 </div>
