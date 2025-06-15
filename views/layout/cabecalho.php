@@ -16,8 +16,7 @@ require_once __DIR__ . '/../../models/Usuario.php';
         <nav>
             <ul>
                 <?php if (Usuario::isLoggedIn()): ?>
-                    <li><a href="?url=cursos">Cursos</a></li>
-                    <li><a href="?url=cursos/novo">Adicionar Curso</a></li>
+                    <li><a href="?url=cursos">Home</a></li>
                     <li><a href="?url=sobre">Sobre</a></li>
                     <li><a href="?url=contato">Contato</a></li>
                     <li><a href="?url=logout">Sair</a></li>
