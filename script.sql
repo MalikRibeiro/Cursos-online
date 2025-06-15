@@ -53,7 +53,7 @@ INSERT INTO cursos (titulo, descricao, url_video) VALUES
 ('Introdução ao Docker', 'Aprenda os fundamentos do Docker e como criar contêineres', 'https://www.youtube.com/watch?v=YFl2mCHdv24&list=PLHz_AreHm4dkN8j2j3bX0c6d7a5a8e9c3&ab_channel=CursoemV%C3%ADdeo'),
 ('Testes Automatizados com Jest', 'Curso sobre como escrever testes automatizados usando Jest', 'https://www.youtube.com/watch?v=7r4xVDI2vho&list=PLHz_AreHm4dkN8j2j3bX0c6d7a5a8e9c3&ab_channel=CursoemV%C3%ADdeo'),
 ('Desenvolvimento de Jogos com Unity', 'Curso introdutório sobre desenvolvimento de jogos usando Unity', 'https://www.youtube.com/watch?v=IlKaB1etrik&list=PLHz_AreHm4dkN8j2j3bX0c6d7a5a8e9c3&ab_channel=CursoemV%C3%ADdeo'),
-('Introdução ao Machine Learning', 'Aprenda os conceitos básicos de Machine Learning com Python', 'https://www.youtube.com/watch?v=Gv9_4yMHFhI&list=PLHz_AreHm4dkN8j2j3bX0c6d7a5a8e9c3&ab_channel=CursoemV%C3%ADdeo'),
+('Introdução ao Machine Learning', 'Aprenda os conceitos básicos de Machine Learning com Python', 'https://www.youtube.com/watch?v=Gv9_4yMHFhI&list=PLHz_AreHm4dkN8j2j3bX0c6d7a5a8e9c3&ab_channel=CursoemV%C3%ADdeo');
 
 
 -- Vinculando usuários aos cursos
