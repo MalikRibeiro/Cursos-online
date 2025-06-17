@@ -124,8 +124,7 @@ class CursoController
         header("Location: ?url=cursos/ver/$idCurso");
         exit;
     }
-    
-    // Função auxiliar para extrair o ID do vídeo do YouTube
+
     public static function extrairIdYoutube($url)
     {
         if (empty($url)) return null;
@@ -136,7 +135,6 @@ class CursoController
         return isset($matches[1]) ? $matches[1] : null;
     }
     
-    // Função auxiliar para gerar URL da thumbnail do YouTube
     public static function obterThumbnailYoutube($url)
     {
         $videoId = self::extrairIdYoutube($url);
@@ -146,7 +144,6 @@ class CursoController
         return null;
     }
     
-    // Função auxiliar para gerar URL de embed do YouTube
     public static function obterEmbedYoutube($url)
     {
         $videoId = self::extrairIdYoutube($url);
