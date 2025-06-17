@@ -38,14 +38,11 @@ class HomeController
                 $erro = "Por favor, preencha todos os campos.";
             }
         }
-        
-        // Apresenta o formulário de login
         include __DIR__ . '/../views/login.php';
     }
 
     public static function logar() 
     {
-        // Esta função é mantida para compatibilidade, mas redireciona para login()
         self::login();
     }
 
