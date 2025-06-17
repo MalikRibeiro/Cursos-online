@@ -40,8 +40,20 @@ class Usuario
         
         return isset($_SESSION['usuario_id']);
     }
+
+    public static function getCurrentUser()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        
+        if (isset($_SESSION['usuario_id'])) {
+            return [
+                'id' => $_SESSION['usuario_id'],
+                'email' => $_SESSION['email']
+            ];
+        }
         
         return null;
     }
 }
-
