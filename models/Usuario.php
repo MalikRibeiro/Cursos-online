@@ -19,7 +19,6 @@ class Usuario
         $usuario = self::buscarPorEmail($email);
         
         if ($usuario && $usuario['senha'] === md5($senha)) {
-            // Inicia a sessão se ainda não foi iniciada
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
