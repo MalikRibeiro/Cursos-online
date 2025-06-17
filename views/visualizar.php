@@ -40,8 +40,6 @@ $outrosCursos = Curso::buscarOutrosCursos($curso['id'], 5);
                 </div>
             </div>
         </div>
-
-        <!-- Sidebar com outros vídeos -->
         <div class="video-sidebar">
             <h3>Outros Cursos</h3>
             <div class="video-list">
